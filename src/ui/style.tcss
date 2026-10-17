@@ -1,0 +1,409 @@
+/* ==========================================================================
+   Desktop Environment Manager - Master TCSS Stylesheet
+   Central stylesheet controlling all UI templates and units
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Global Variables & Theme Tokens
+   -------------------------------------------------------------------------- */
+$primary: #2563eb;
+$primary-hover: #1d4ed8;
+$primary-active: #1e40af;
+$accent: #38bdf8;
+$accent-hover: #0ea5e9;
+
+/* Deep Dark Palette */
+$background: #080b11;
+$surface: #0f1523;
+$surface-card: #131b2e;
+$surface-hover: #18233c;
+$surface-active: #1e2c4d;
+
+$border: #1c2638;
+$border-light: #283750;
+$border-focus: #38bdf8;
+
+/* Menu Selection Highlight Tokens */
+$menu-highlight-bg: #14284b;
+$menu-highlight-border: #38bdf8;
+
+$text: #f8fafc;
+$text-muted: #94a3b8;
+$text-dim: #64748b;
+
+$success: #10b981;
+$warning: #f59e0b;
+$error: #ef4444;
+
+/* --------------------------------------------------------------------------
+   Screen & Base Container Layout
+   -------------------------------------------------------------------------- */
+Screen {
+    background: $background;
+    color: $text;
+    layout: vertical;
+    align: center middle;
+}
+
+#screen-header {
+    dock: top;
+    height: auto;
+    width: 100%;
+    padding: 1 2;
+    background: $surface;
+    border-bottom: solid $border;
+    align: center middle;
+}
+
+#screen-title {
+    text-style: bold;
+    color: $text;
+    text-align: center;
+    width: 100%;
+}
+
+#screen-subtitle {
+    color: $text-muted;
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+}
+
+#screen-footer-container {
+    dock: bottom;
+    height: auto;
+    width: 100%;
+    padding: 1 2;
+    background: $surface;
+    border-top: solid $border;
+    align: center middle;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & Action Controls
+   -------------------------------------------------------------------------- */
+Button {
+    min-width: 14;
+    height: 3;
+    border: none;
+    margin: 0 1;
+}
+
+Button.btn-primary {
+    background: $primary;
+    color: $text;
+}
+
+Button.btn-primary:hover {
+    background: $primary-hover;
+}
+
+Button.btn-primary:focus {
+    background: $primary-active;
+}
+
+Button.btn-secondary {
+    background: $surface-card;
+    color: $text-muted;
+    border: solid $border;
+}
+
+Button.btn-secondary:hover {
+    background: $surface-hover;
+    color: $text;
+}
+
+/* --------------------------------------------------------------------------
+   InfoScreen Styles (Continuous Text Document - No Bounding Boxes)
+   -------------------------------------------------------------------------- */
+#info-screen-container {
+    width: 85%;
+    max-width: 95;
+    height: 100%;
+    layout: vertical;
+    align: center top;
+}
+
+#info-scroll-container {
+    width: 100%;
+    height: 1fr;
+    padding: 2 3;
+    background: transparent;
+}
+
+.info-block {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.info-block-headline {
+    color: $text;
+    width: 100%;
+}
+
+.info-block-minor {
+    color: $text-muted;
+    width: 100%;
+    margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   MenuScreen Styles (Clear Highlight Box on Navigation)
+   -------------------------------------------------------------------------- */
+#menu-screen-container {
+    width: 85%;
+    max-width: 90;
+    height: 100%;
+    layout: vertical;
+    align: center middle;
+}
+
+.menu-list {
+    width: 100%;
+    height: 1fr;
+    background: transparent;
+    border: none;
+    padding: 1 0;
+}
+
+/* Default unselected menu item */
+.menu-item {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1;
+    padding: 1 2;
+    background: $surface-card;
+    border: solid $border;
+}
+
+/* Mouse hover state */
+.menu-item:hover,
+.menu-item.-hovered {
+    background: $surface-hover;
+    border: solid $border-light;
+}
+
+/* Unambiguous, high-contrast selection highlight box for arrow navigation */
+.menu-item.-highlight,
+ListView:focus > .menu-item.-highlight {
+    background: $menu-highlight-bg;
+    border: heavy $menu-highlight-border;
+}
+
+.menu-item-row {
+    width: 100%;
+    height: auto;
+    align-vertical: middle;
+}
+
+.menu-item-number {
+    width: 5;
+    text-style: bold;
+    color: $accent;
+}
+
+.menu-item-content {
+    width: 1fr;
+    height: auto;
+}
+
+.menu-item-title {
+    text-style: bold;
+    color: $text;
+}
+
+.menu-item-description {
+    color: $text-muted;
+    margin-top: 0;
+}
+
+/* Enhanced text contrast when highlighted */
+.menu-item.-highlight .menu-item-title,
+ListView:focus > .menu-item.-highlight .menu-item-title {
+    color: #ffffff;
+    text-style: bold;
+}
+
+.menu-item.-highlight .menu-item-number,
+ListView:focus > .menu-item.-highlight .menu-item-number {
+    color: $accent;
+    text-style: bold;
+}
+
+.menu-item.-highlight .menu-item-description,
+ListView:focus > .menu-item.-highlight .menu-item-description {
+    color: #e2e8f0;
+}
+
+.menu-item-disabled {
+    opacity: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   InputScreen Styles
+   -------------------------------------------------------------------------- */
+#input-screen-container {
+    width: 85%;
+    max-width: 90;
+    height: 100%;
+    layout: vertical;
+    align: center middle;
+}
+
+.form-scroll-container {
+    width: 100%;
+    height: 1fr;
+    padding: 1 2;
+}
+
+.field-container {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1;
+    padding: 1 2;
+    background: $surface-card;
+    border: solid $border;
+}
+
+.field-label {
+    text-style: bold;
+    color: $text;
+    margin-bottom: 0;
+}
+
+.field-widget {
+    width: 100%;
+    margin-top: 1;
+    margin-bottom: 0;
+}
+
+SelectionList.field-widget {
+    height: auto;
+    max-height: 8;
+    background: $surface;
+    border: solid $border;
+    padding: 0 1;
+}
+
+.field-description {
+    color: $text-muted;
+    margin-top: 1;
+}
+
+.field-error {
+    color: $error;
+    text-style: italic;
+    display: none;
+    margin-top: 1;
+}
+
+.field-error.visible {
+    display: block;
+}
+
+.form-actions {
+    width: 100%;
+    height: auto;
+    align: center middle;
+    padding: 1 0;
+}
+
+/* --------------------------------------------------------------------------
+   ErrorScreen Styles
+   -------------------------------------------------------------------------- */
+#error-screen-container {
+    width: 80%;
+    max-width: 80;
+    height: auto;
+    max-height: 80%;
+    padding: 2;
+    background: $surface-card;
+    border: heavy $error;
+    align: center middle;
+}
+
+#error-header {
+    width: 100%;
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#error-title {
+    text-style: bold;
+    color: $error;
+    text-align: center;
+    width: 100%;
+}
+
+#error-message-container {
+    width: 100%;
+    height: auto;
+    max-height: 14;
+    margin-bottom: 2;
+    padding: 1 2;
+    background: $surface;
+    border: solid $border;
+}
+
+#error-message-text {
+    color: $text;
+    text-align: center;
+    width: 100%;
+}
+
+#error-footer-container {
+    width: 100%;
+    height: auto;
+    align: center middle;
+}
+
+Button.btn-error {
+    background: $error;
+    color: $text;
+}
+
+Button.btn-error:hover {
+    background: #dc2626;
+}
+
+Button.btn-error:focus {
+    background: #b91c1c;
+}
+
+/* --------------------------------------------------------------------------
+   LoadingScreen Styles
+   -------------------------------------------------------------------------- */
+#loading-screen-container {
+    width: 60%;
+    max-width: 65;
+    height: auto;
+    padding: 3;
+    background: $surface-card;
+    border: solid $border;
+    align: center middle;
+}
+
+#loading-title {
+    text-style: bold;
+    color: $accent;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#loading-status {
+    color: $text-muted;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2;
+}
+
+#loading-spinner {
+    height: 3;
+    color: $primary;
+}
