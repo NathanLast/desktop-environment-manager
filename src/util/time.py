@@ -1,8 +1,4 @@
 from datetime import datetime
-from zoneinfo import ZoneInfo
-
-
-ISRAEL_TIMEZONE = ZoneInfo("Asia/Jerusalem")
 
 
 def get_now_millis() -> int:
@@ -10,6 +6,4 @@ def get_now_millis() -> int:
 
 
 def millis_to_datetime_str(timestamp: int) -> str:
-    return datetime.fromtimestamp(timestamp / 1000, tz=ISRAEL_TIMEZONE).strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
+    return datetime.fromtimestamp(timestamp / 1000).strftime("%Y-%m-%d %H:%M:%S")
